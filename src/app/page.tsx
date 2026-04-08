@@ -70,7 +70,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════════
           HERO
       ════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen-safe flex items-center justify-center overflow-hidden pt-14">
+      <section className="relative min-h-screen-safe flex items-center justify-center overflow-hidden pt-14 w-full max-w-full">
         <div className="absolute inset-0 grid-bg opacity-40" />
 
         {/* Breathing glow */}
@@ -100,11 +100,13 @@ export default function Home() {
 
           {/* Headline — word-by-word blur fade */}
           <h1
-            className="font-syne font-extrabold text-text-primary max-w-3xl"
+            className="font-syne font-extrabold text-text-primary w-full"
             style={{
-              fontSize: "clamp(3rem, 7vw, 5.5rem)",
-              lineHeight: 1.04,
-              letterSpacing: "-0.04em",
+              fontSize: "clamp(2rem, 8vw, 5.5rem)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.03em",
+              overflowWrap: "break-word",
+              wordBreak: "break-word",
             }}
           >
             <m.span
