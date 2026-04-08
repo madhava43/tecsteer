@@ -1,0 +1,198 @@
+.container {
+  padding: 40px 10px;
+  text-align: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(270deg, #9dc6ed, #6ca7df, #64a7df, #9dc6ed);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+.heading {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  background-color: #b8e4ed;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card:focus {
+  outline: 2px solid #005bb5;
+}
+
+.cardInner {
+  width: 100%;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+}
+
+.card:hover .cardInner,
+.flipped .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardFront {
+  background-color: #c0b4db;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardBack {
+  background-color: #aac3f8;
+  transform: rotateY(180deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardBack button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cardBack button:hover {
+  background-color: #005bb5;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Standalone class for the Know More link on the card back */
+.knowMoreButton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.knowMoreButton:hover {
+  background-color: #005bb5;
+}
+
+.contactUsButton {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #42034a;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.contactUsButton:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1.125rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

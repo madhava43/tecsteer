@@ -1,0 +1,186 @@
+.contactContainer {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    gap: 2px;
+    padding: 4px;
+    background: linear-gradient(270deg, #9dc6ed, #6ca7df, #64a7df, #9dc6ed);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leftSection {
+    flex: 1;
+    padding: 10px;
+    background-color: #139fbbf7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leftSection h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .contactDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .contactItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .contactItem i {
+    font-size: 1.5rem;
+    color: #141415;
+  }
+  
+  .contactItem p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .emailLink {
+    color: #020a12;
+    text-decoration: none;
+  }
+  
+  .emailLink:hover {
+    text-decoration: underline;
+  }
+  
+  
+  .rightSection {
+    flex: 1;
+    padding: 10px;
+    background-color: #139fbbf7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rightSection h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .formGroup {
+    flex: 1 1 calc(50% - 10px); /* Two fields per row */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup label {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  .formGroup input,
+  .formGroup textarea {
+    padding: 10px;
+    font-size: 0.85rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .formGroup textarea {
+    resize: none;
+  }
+  
+  .formGroup input:focus,
+  .formGroup textarea:focus {
+    border-color: #117bf4;
+    outline: none;
+  }
+  
+  .fileInput {
+    flex: 1 1 100%; /* Full width for file input */
+  }
+  
+  .submitButton {
+    background-color: #117bf4;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .submitButton:hover {
+    background-color: #005bb5;
+  }
+
+  .errorMessage {
+    color: #dc2626;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+
+  .successMessage {
+    color: #16a34a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .contactUsButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #42034a;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Ensure the button stays above other content */
+  }
+  
+  .contactUsButton:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+  }
+  @media (max-width: 480px) {
+    .hero {
+      height: 60vh;
+    }
+  
+    .heading {
+      font-size: 1.5rem;
+    }
+  
+    .description {
+      font-size: 1rem;
+    }
+  
+    .buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }

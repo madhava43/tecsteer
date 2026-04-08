@@ -1,0 +1,188 @@
+/* General Styles */
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg, #a6d4f5, #a6d4f5);
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 20px 10px;
+  background: linear-gradient(135deg, #3b98ef, #9dc6ed);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.subHeading {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+/* Mission and Vision Section */
+.missionVision {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 10px;
+  background-color: #ffffffb5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.mission,
+.vision {
+  flex: 1;
+  min-width: 300px;
+  padding: 10px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Core Values Section */
+.values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 10px;
+  background-color: #ffffffb5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 5px;
+}
+
+.valuesList {
+  list-style: none;
+  padding: 0;
+  margin: 35px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+}
+
+.valuesList li {
+  font-size: 1rem;
+  color: #333;
+  background: #b6dcf5;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Us Button */
+.contactUsButton {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  background-color: #42034a;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.contactUsButton:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .subHeading {
+    font-size: 1rem;
+  }
+
+  .mission,
+  .vision {
+    flex: 1 1 100%;
+  }
+
+  .valuesList {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .contactUsButton {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 15px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .subHeading {
+    font-size: 0.9rem;
+  }
+
+  .missionVision {
+    padding: 15px;
+  }
+
+  .valuesList {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contactUsButton {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}

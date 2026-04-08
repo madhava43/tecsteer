@@ -1,0 +1,422 @@
+/* General Styles */
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(270deg, #9dc6ed, #6ca7df, #64a7df, #9dc6ed);
+  background-size: 400% 400%;
+  animation: backgroundMove 12s linear infinite;
+  z-index: 1; /* Ensure proper stacking */
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 85svh;
+  min-height: 420px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px; /* Add padding for small screens */
+  animation: fadeIn 2s ease-in-out;
+}
+
+.description {
+  font-size: clamp(1rem, 2.5vw, 1.1rem); /* Responsive font size */
+  color: #fff;
+  margin-top: 10px;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 10px auto;
+  padding: 0 20px; /* Add padding for small screens */
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+}
+
+.buttonPrimary,
+.buttonSecondary {
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
+}
+
+.buttonPrimary {
+  background-color: #42034a;
+  color: #fff;
+}
+
+.buttonPrimary:hover {
+  background-color: #2409d1;
+  transform: scale(1.05);
+}
+
+.buttonSecondary {
+  background-color: transparent;
+  border: 2px solid #c1d3e8;
+  color: #bbd3ee;
+}
+
+.buttonSecondary:hover {
+  background-color: #e6f3ff;
+  color: #42034a;
+  transform: scale(1.05);
+}
+
+/* Slider Section */
+.slidesContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease-in-out;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Navigation Buttons for Slides */
+.navButtonLeft,
+.navButtonRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.navButtonLeft {
+  left: 12px;
+}
+
+.navButtonRight {
+  right: 12px;
+}
+
+.navButtonLeft:hover,
+.navButtonRight:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Services Section */
+.services {
+  position: relative;
+  text-align: center;
+  padding: 20px 10px;
+  background: linear-gradient(270deg, #9dc6ed, #6ca7df, #64a7df, #9dc6ed);
+  background-size: 400% 400%;
+  animation: backgroundMove 12s linear infinite;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.subHeading {
+  font-size: clamp(1.5rem, 4vw, 1.8rem); /* Responsive font size */
+  color: #fff;
+  margin-bottom: 15px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.paragraph {
+  font-size: clamp(1rem, 2.5vw, 1.1rem); /* Responsive font size */
+  color: #e0eaf5; /* Improved contrast */
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 0 20px; /* Add padding for small screens */
+}
+
+.link {
+  display: inline-block;
+  color: #e0eaf5;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #005bb5;
+  text-decoration: underline;
+}
+
+/* Grid Layout for Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  animation: fadeInUp 1s ease-in-out;
+  padding: 0 20px; /* Add padding for small screens */
+}
+
+/* Service Card Styles */
+.cardWrapper {
+  perspective: 1000px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+  background: linear-gradient(145deg, #f9f9f9, #64d5e9);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+}
+
+.card:hover .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.cardFront {
+  background: linear-gradient(135deg, #e8a7d2, #00fff1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(255, 0, 170, 0.5), 0 0 30px rgba(0, 255, 241, 0.5);
+}
+
+.cardBack {
+  background-color: #a8d0f5;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.icon {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover .icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.cardTitle {
+  font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font size */
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cardDescription {
+  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
+  color: #666;
+}
+
+.cardButton {
+  background-color: #42034a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cardButton:hover {
+  background-color: #0d7ae7;
+}
+
+.contactUsButton {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #42034a;
+  color: white;
+  padding: 12px 24px;
+  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.contactUsButton:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes backgroundMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(20%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%) scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    height: 75vh;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .navButtonLeft,
+  .navButtonRight {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 65vh;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

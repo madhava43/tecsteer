@@ -1,0 +1,113 @@
+/* Footer Styles */
+.footer {
+  padding: 10px 10px;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Footer Layout */
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Quick Links Section */
+.quickLinks {
+  flex: 1;
+}
+
+.quickLinks h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.quickLinks ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quickLinks li {
+  text-align: left;
+}
+
+.quickLinks a {
+  color: #f3f4f6;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.quickLinks a:hover {
+  color: #22d3ee;
+  transform: scale(1.1);
+}
+
+/* Social Links Section */
+.socialLinks {
+  flex: 1;
+  text-align: center;
+}
+
+.socialLinks h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.socialLinks a {
+  font-size: 1.5rem;
+  color: #02060f;
+  margin-right: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.socialLinks a:hover {
+  transform: scale(1.3);
+  color: #4ade80;
+}
+
+/* Copyright Section */
+.copy {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f3f4f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .quickLinks,
+  .socialLinks {
+    margin-bottom: 20px;
+  }
+
+  .quickLinks ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .socialLinks a {
+    margin: 0 10px;
+  }
+}
