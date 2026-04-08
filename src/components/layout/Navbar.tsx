@@ -98,7 +98,7 @@ export default function Navbar() {
         >
           {/* ── Logo ── */}
           <Link href="/" aria-label="Tecsteer home" className="flex-shrink-0">
-            <Image src="/logo.png" alt="Tecsteer" width={120} height={36} priority className="object-contain brightness-0 invert" />
+            <Image src="/logo.png" alt="Tecsteer" width={120} height={44} priority className="object-contain brightness-0 invert" />
           </Link>
 
           {/* ── Desktop nav links ── */}
@@ -261,7 +261,7 @@ export default function Navbar() {
               style={{ height: "56px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
             >
               <Link href="/" onClick={() => setIsOpen(false)} aria-label="Tecsteer home">
-                <Image src="/logo.png" alt="Tecsteer" width={120} height={36} priority className="object-contain brightness-0 invert" />
+                <Image src="/logo.png" alt="Tecsteer" width={120} height={44} priority className="object-contain brightness-0 invert" />
               </Link>
               <button
                 onClick={() => setIsOpen(false)}

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description: "Learn about Tecsteer — our mission, vision, and the core values that drive everything we do.",
     url: "https://tecsteer.com/about",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };
 

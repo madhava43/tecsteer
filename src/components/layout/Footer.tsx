@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaLinkedinIn, FaTwitter, FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const footerLinks = {
@@ -131,9 +131,9 @@ export default function Footer() {
 
           <div className="flex items-center gap-2">
             {[
-              { href: "#", label: "Facebook", icon: FaFacebookF },
-              { href: "#", label: "Twitter", icon: FaTwitter },
-              { href: "#", label: "LinkedIn", icon: FaLinkedinIn },
+              { href: "https://linkedin.com/company/tecsteer", label: "LinkedIn", icon: FaLinkedinIn },
+              { href: "https://twitter.com/tecsteer", label: "Twitter", icon: FaTwitter },
+              { href: "https://github.com/tecsteer", label: "GitHub", icon: FaGithub },
             ].map(({ href, label, icon: Icon }) => (
               <a
                 key={label}

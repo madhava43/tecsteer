@@ -103,8 +103,13 @@ function JobCard({
   );
 }
 
+const departments = ["All", ...Array.from(new Set(jobs.map((j) => j.department)))];
+
 export default function Careers() {
   const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
+  const [activeDept, setActiveDept] = useState("All");
+
+  const filteredJobs = activeDept === "All" ? jobs : jobs.filter((j) => j.department === activeDept);
 
   return (
     <PageWrapper>
@@ -189,12 +194,36 @@ export default function Careers() {
             </div>
           </AnimateIn>
 
-          <div className="flex flex-col gap-4">
-            {jobs.map((job, i) => (
-              <AnimateIn key={job.id} direction={i % 2 === 0 ? "left" : "right"} delay={i * 50}>
-                <JobCard job={job} onApply={(j) => setSelectedJob(j)} />
-              </AnimateIn>
+          {/* Department filter */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {departments.map((dept) => (
+              <button
+                key={dept}
+                onClick={() => setActiveDept(dept)}
+                className="px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-150"
+                style={{
+                  background: activeDept === dept ? "rgba(0, 102, 255, 0.15)" : "rgba(255,255,255,0.04)",
+                  border: activeDept === dept ? "1px solid rgba(0, 102, 255, 0.4)" : "1px solid rgba(255,255,255,0.08)",
+                  color: activeDept === dept ? "#6699FF" : "#8896B3",
+                }}
+              >
+                {dept}
+              </button>
             ))}
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {filteredJobs.length > 0 ? (
+              filteredJobs.map((job, i) => (
+                <AnimateIn key={job.id} direction={i % 2 === 0 ? "left" : "right"} delay={i * 50}>
+                  <JobCard job={job} onApply={(j) => setSelectedJob(j)} />
+                </AnimateIn>
+              ))
+            ) : (
+              <p className="text-text-muted text-sm font-mono py-8 text-center">
+                No openings in this department right now.
+              </p>
+            )}
           </div>
 
           <div className="flex justify-start mt-10">

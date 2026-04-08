@@ -9,6 +9,7 @@ export interface BlogPost {
   category: string;
   readTime: string;
   image?: string;
+  tags?: string[];
 }
 
 export const posts: BlogPost[] = [
@@ -21,6 +22,7 @@ export const posts: BlogPost[] = [
     excerpt: "Explore the latest insights and updates from Tecsteer.",
     category: "Company News",
     readTime: "3 min read",
+    tags: ["Company", "Announcement", "Technology"],
     image: "/images/blog1.webp",
     content: `Welcome to the Tecsteer blog — your destination for practical insights on technology, career development, and IT transformation. We created this space to share what we learn every day working with clients across industries and to give back to the community that has supported our growth.
 
@@ -37,6 +39,7 @@ In the coming months, expect deep dives into Salesforce best practices, cloud mi
     excerpt: "How cutting-edge technology drives business success.",
     category: "Technology",
     readTime: "4 min read",
+    tags: ["Cloud", "AWS", "Innovation"],
     image: "/images/blog2.webp",
     content: `Technology does not stand still, and neither do the businesses that depend on it. In 2025, the organizations seeing the greatest returns are not necessarily those with the largest budgets — they are the ones that have chosen the right tools, implemented them thoughtfully, and aligned them tightly with business goals. At Tecsteer, we see this play out every day in our consulting and implementation work.
 
@@ -53,6 +56,7 @@ Equally important is the human side of innovation. Technology only delivers valu
     excerpt: "Empowering individuals through tailored training programs.",
     category: "Training",
     readTime: "5 min read",
+    tags: ["Training", "Salesforce", "Career Development"],
     image: "/images/blog3.webp",
     content: `The fastest way to future-proof your career is to invest in your skills deliberately and consistently. The IT landscape shifts fast — what was a hot skill three years ago may be table stakes today, and what is emerging now may define the next decade. At Tecsteer, our training programs are built around this reality. We focus on the skills that matter now and that will matter tomorrow.
 

@@ -2,6 +2,24 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
 
+// Conditionally import Upstash only when env vars are present
+let ratelimit: import("@upstash/ratelimit").Ratelimit | null = null;
+async function getRatelimit() {
+  if (
+    !ratelimit &&
+    process.env.UPSTASH_REDIS_REST_URL &&
+    process.env.UPSTASH_REDIS_REST_TOKEN
+  ) {
+    const { Ratelimit } = await import("@upstash/ratelimit");
+    const { Redis } = await import("@upstash/redis");
+    ratelimit = new Ratelimit({
+      redis: Redis.fromEnv(),
+      limiter: Ratelimit.slidingWindow(5, "10 m"),
+    });
+  }
+  return ratelimit;
+}
+
 function sanitize(str: string): string {
   return String(str)
     .replace(/&/g, "&amp;")
@@ -31,6 +49,19 @@ export async function POST(req: Request) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   if (siteUrl && origin && origin !== siteUrl) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  // Rate limiting (only active when Upstash env vars are configured)
+  const limiter = await getRatelimit();
+  if (limiter) {
+    const ip = req.headers.get("x-forwarded-for") ?? "127.0.0.1";
+    const { success } = await limiter.limit(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again in a few minutes." },
+        { status: 429 }
+      );
+    }
   }
 
   let formData: FormData;

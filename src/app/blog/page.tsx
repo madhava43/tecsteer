@@ -17,10 +17,25 @@ export const metadata: Metadata = {
     description: "Stay updated with the latest insights from Tecsteer.",
     url: "https://tecsteer.com/blog",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };
 
 export default function Blog() {
+  if (posts.length === 0) {
+    return (
+      <PageWrapper>
+        <section className="relative py-28 md:py-36 flex flex-col items-center justify-center text-center gap-4">
+          <span className="eyebrow">INSIGHTS & ARTICLES</span>
+          <h1 className="font-syne font-bold text-text-primary text-3xl tracking-tight">No posts yet</h1>
+          <p className="text-text-secondary text-base max-w-[40ch]">
+            We&apos;re working on new content. Check back soon.
+          </p>
+        </section>
+      </PageWrapper>
+    );
+  }
+
   const [featured, ...rest] = posts;
 
   return (
@@ -133,6 +148,18 @@ export default function Blog() {
                           <h3 className="font-syne font-semibold text-base text-text-primary group-hover:text-accent-primary transition-colors duration-150 line-clamp-2 tracking-tight">
                             {post.title}
                           </h3>
+                          {post.tags && post.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-1.5">
+                              {post.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono text-text-muted bg-white/[0.04] border border-white/[0.06]"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                           <p className="text-text-secondary text-sm leading-relaxed line-clamp-3 flex-1">
                             {post.excerpt}
                           </p>

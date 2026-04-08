@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Cloud, Smartphone, Layers, Server, Code2, Palette, BarChart3, ShieldCheck } from "lucide-react";
 import { services } from "@/lib/data/services";
+import { serviceIconsLucide as iconMap } from "@/lib/data/serviceIcons";
 import ServiceCard from "@/components/sections/ServiceCard";
 import PageWrapper from "@/components/layout/PageWrapper";
 import CTABanner from "@/components/sections/CTABanner";
@@ -16,18 +16,8 @@ export const metadata: Metadata = {
     description: "Explore Tecsteer's full range of IT services.",
     url: "https://tecsteer.com/services",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
-};
-
-const iconMap: Record<string, React.ReactNode> = {
-  salesforce: <Cloud size={20} />,
-  "mobile-development": <Smartphone size={20} />,
-  "application-services": <Layers size={20} />,
-  "aws-consulting": <Server size={20} />,
-  "web-development": <Code2 size={20} />,
-  "ui-ux-design": <Palette size={20} />,
-  "data-analytics": <BarChart3 size={20} />,
-  cybersecurity: <ShieldCheck size={20} />,
 };
 
 export default function Services() {

@@ -10,7 +10,9 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("Page error:", error);
+    if (process.env.NODE_ENV !== "production") {
+      console.error("Page error:", error);
+    }
   }, [error]);
 
   return (

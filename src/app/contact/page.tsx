@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { MapPin, Phone, Mail, ArrowRight, CheckCircle } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { GradientText } from "@/components/ui/GradientText";
@@ -8,6 +8,9 @@ import AnimateIn from "@/components/ui/AnimateIn";
 import { cn } from "@/lib/utils";
 
 export default function Contact() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -68,17 +71,23 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
-  };
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }, 300);
+  }, []);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] ?? null;
     setFormData((prev) => ({ ...prev, file }));
-    setErrors((prev) => ({ ...prev, file: validateField("file", file) }));
-  };
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      setErrors((prev) => ({ ...prev, file: validateField("file", file) }));
+    }, 300);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -99,8 +108,7 @@ export default function Contact() {
       if (response.ok) {
         setSuccessMessage("Your message has been sent successfully!");
         setFormData({ firstName: "", lastName: "", phoneNumber: "", email: "", message: "", file: null });
-        const fileInput = document.getElementById("file") as HTMLInputElement;
-        if (fileInput) fileInput.value = "";
+        if (fileInputRef.current) fileInputRef.current.value = "";
         setTimeout(() => setSuccessMessage(""), 5000);
       } else {
         throw new Error(result.error ?? "Failed to send your message.");
@@ -270,6 +278,7 @@ export default function Contact() {
                     <span className="text-text-muted normal-case tracking-normal">(optional, PDF/DOC/DOCX, max 5 MB)</span>
                   </label>
                   <input
+                    ref={fileInputRef}
                     type="file"
                     id="file"
                     onChange={handleFileChange}
