@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { services } from "@/lib/data/services";
-import { useScrambleText } from "@/hooks/useScrambleText";
 
 const navLinks = [
   { href: "/services", label: "Services", hasDropdown: true },
@@ -18,30 +18,6 @@ const navLinks = [
   { href: "/blog", label: "Blog" },
 ];
 
-/** Logo wordmark — white, scrambles on hover */
-function LogoWordmark() {
-  const [trigger, setTrigger] = useState(false);
-  const text = useScrambleText("Tecsteer", trigger, 28);
-
-  return (
-    <span
-      style={{
-        fontFamily: "var(--font-syne), sans-serif",
-        fontWeight: 700,
-        fontSize: "18px",
-        color: "#F0F4FF",
-        letterSpacing: "-0.02em",
-        cursor: "default",
-      }}
-      onMouseEnter={() => {
-        setTrigger(false);
-        setTimeout(() => setTrigger(true), 0);
-      }}
-    >
-      {text}
-    </span>
-  );
-}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -122,7 +98,7 @@ export default function Navbar() {
         >
           {/* ── Logo ── */}
           <Link href="/" aria-label="Tecsteer home" className="flex-shrink-0">
-            <LogoWordmark />
+            <Image src="/logo.png" alt="Tecsteer" width={140} height={40} priority className="object-contain" />
           </Link>
 
           {/* ── Desktop nav links ── */}
@@ -285,17 +261,7 @@ export default function Navbar() {
               style={{ height: "56px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
             >
               <Link href="/" onClick={() => setIsOpen(false)} aria-label="Tecsteer home">
-                <span
-                  style={{
-                    fontFamily: "var(--font-syne), sans-serif",
-                    fontWeight: 700,
-                    fontSize: "18px",
-                    color: "#F0F4FF",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  Tecsteer
-                </span>
+                <Image src="/logo.png" alt="Tecsteer" width={140} height={40} priority className="object-contain" />
               </Link>
               <button
                 onClick={() => setIsOpen(false)}
